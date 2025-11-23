@@ -21,7 +21,11 @@ const Map = (props: MapProps) => {
   return (
     <MapContainer center={[lat, lon]} zoom={5} style={{ width: "100%", height: "500px" }}>
       <MapClick onMapClick={props.onMapClick} coords={props.coords} />
-      <MapTileLayer />
+      {/* <MapTileLayer /> */}
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
       <TileLayer
         opacity={0.7}
         url={`https://tile.openweathermap.org/map/${props.mapType}/{z}/{x}/{y}.png?appid=${OPENWEATHER_API_KEY}`}
