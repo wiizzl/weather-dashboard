@@ -5,7 +5,7 @@ import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import type { Coords } from "@/types";
 
 const OPENWEATHER_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
-const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
+// const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
 
 type MapProps = {
   coords: Coords;
