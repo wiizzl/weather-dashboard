@@ -43,8 +43,8 @@ const CurrentWeatherCard = (props: CurrentWeatherCardProps) => {
         </h3>
       </div>
       <div className="flex justify-between w-full">
-        {subFields.map((field, index) => (
-          <div className="flex flex-col items-center gap-2" key={index}>
+        {subFields.map((field) => (
+          <div className="flex flex-col items-center gap-2" key={field.label}>
             <p className="text-muted-foreground">{field.label}</p>
             <p>{field.value}</p>
           </div>

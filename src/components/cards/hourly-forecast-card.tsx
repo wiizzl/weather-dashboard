@@ -18,11 +18,11 @@ const HourlyForecastCard = (props: HourlyForecastCardProps) => {
 
   return (
     <Card title="Hourly Forecast (48 Hours)" childrenClassName="flex gap-6 overflow-x-scroll">
-      {data?.hourly.map((hour, index) => {
+      {data?.hourly.map((hour) => {
         const weather = hour.weather[0]; // TODO: handle multiple weather conditions
 
         return (
-          <div className="flex flex-col gap-2 items-center p-2" key={index}>
+          <div className="flex flex-col gap-2 items-center p-2" key={hour.dt}>
             <p className="whitespace-nowrap">
               {new Intl.DateTimeFormat(undefined, {
                 hour: "2-digit",

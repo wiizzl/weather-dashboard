@@ -18,11 +18,11 @@ const DailyForecastCard = (props: DailyForecastCardProps) => {
 
   return (
     <Card title="Daily Forecast" childrenClassName="flex flex-col gap-4">
-      {data?.daily.map((day, index) => {
+      {data?.daily.map((day) => {
         const weather = day.weather[0]; // TODO: handle multiple weather conditions
 
         return (
-          <div className="flex justify-between" key={index}>
+          <div className="flex justify-between" key={day.dt}>
             <p className="w-9">
               {new Intl.DateTimeFormat(undefined, { weekday: "short" }).format(new Date(day.dt * 1000))}.
             </p>

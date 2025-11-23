@@ -51,8 +51,8 @@ const AdditionalInfoCard = (props: AdditionalInfoCardProps) => {
 
   return (
     <Card title="Additional Weather Info" childrenClassName="flex flex-col gap-8">
-      {rows.map((row, index) => (
-        <div className="flex justify-between" key={index}>
+      {rows.map((row) => (
+        <div className="flex justify-between" key={row.label}>
           <div className="flex items-center gap-2 text-muted-foreground">
             <row.icon className="size-5" />
             <span>{row.label}</span>

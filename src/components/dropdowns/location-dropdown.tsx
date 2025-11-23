@@ -9,6 +9,7 @@ type LocationDropdownProps = {
 const LocationDropdown = (props: LocationDropdownProps) => {
   return (
     <NativeSelect value={props.location} onChange={(event) => props.setLocation(event.target.value)}>
+      <NativeSelectOption value="custom">Custom</NativeSelectOption>
       {locations.map((city) => (
         <NativeSelectOption value={city} key={city}>
           {city}
