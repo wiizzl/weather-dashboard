@@ -7,10 +7,14 @@ const WeatherSchema = z.object({
   icon: z.string(),
 });
 
+const PrecipitationSchema = z.object({
+  "1h": z.number().optional(),
+});
+
 const CurrentSchema = z.object({
   dt: z.number(),
-  sunrise: z.number(),
-  sunset: z.number(),
+  sunrise: z.number().optional(),
+  sunset: z.number().optional(),
   temp: z.number(),
   feels_like: z.number(),
   pressure: z.number(),
@@ -21,8 +25,10 @@ const CurrentSchema = z.object({
   visibility: z.number(),
   wind_speed: z.number(),
   wind_deg: z.number(),
-  wind_gust: z.number(),
+  wind_gust: z.number().optional(),
   weather: z.array(WeatherSchema),
+  rain: PrecipitationSchema.optional(),
+  snow: PrecipitationSchema.optional(),
 });
 
 const HourlySchema = z.object({
@@ -34,12 +40,14 @@ const HourlySchema = z.object({
   dew_point: z.number(),
   uvi: z.number(),
   clouds: z.number(),
-  visibility: z.number(),
+  visibility: z.number().optional(),
   wind_speed: z.number(),
   wind_deg: z.number(),
-  wind_gust: z.number(),
+  wind_gust: z.number().optional(),
   weather: z.array(WeatherSchema),
   pop: z.number(),
+  rain: PrecipitationSchema.optional(),
+  snow: PrecipitationSchema.optional(),
 });
 
 const TempSchema = z.object({
@@ -60,8 +68,8 @@ const FeelsLikeSchema = z.object({
 
 const DailySchema = z.object({
   dt: z.number(),
-  sunrise: z.number(),
-  sunset: z.number(),
+  sunrise: z.number().optional(),
+  sunset: z.number().optional(),
   moonrise: z.number(),
   moonset: z.number(),
   moon_phase: z.number(),
@@ -73,11 +81,12 @@ const DailySchema = z.object({
   dew_point: z.number(),
   wind_speed: z.number(),
   wind_deg: z.number(),
-  wind_gust: z.number(),
+  wind_gust: z.number().optional(),
   weather: z.array(WeatherSchema),
   clouds: z.number(),
   pop: z.number(),
   rain: z.number().optional(),
+  snow: z.number().optional(),
   uvi: z.number(),
 });
 
