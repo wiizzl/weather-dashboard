@@ -3,8 +3,6 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 
 import type { Coords } from "@/types";
-import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
-import { useEffect } from "react";
 
 const OPENWEATHER_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
@@ -35,24 +33,24 @@ const Map = (props: MapProps) => {
   );
 };
 
-const MapTileLayer = () => {
-  const map = useMap();
+// const MapTileLayer = () => {
+//   const map = useMap();
 
-  useEffect(() => {
-    const tileLayer = new MaptilerLayer({
-      style: "satellite",
-      apiKey: MAPTILER_API_KEY,
-    });
+//   useEffect(() => {
+//     const tileLayer = new MaptilerLayer({
+//       style: "satellite",
+//       apiKey: MAPTILER_API_KEY,
+//     });
 
-    tileLayer.addTo(map);
+//     tileLayer.addTo(map);
 
-    return () => {
-      map.removeLayer(tileLayer);
-    };
-  }, [map]);
+//     return () => {
+//       map.removeLayer(tileLayer);
+//     };
+//   }, [map]);
 
-  return null;
-};
+//   return null;
+// };
 
 const MapClick = (props: { onMapClick: (coords: Coords) => void; coords: Coords }) => {
   const map = useMap();
