@@ -1,11 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { WeatherIcon } from "../weather-icon";
-import { Card } from "./card";
+import { Card } from "@/components/cards/card";
+import { WeatherIcon } from "@/components/weather-icon";
 
-import { getWeather } from "../../api";
-
-import type { Coords } from "../../types";
+import { getWeather } from "@/api";
+import type { Coords } from "@/types";
 
 type HourlyForecastCardProps = {
   coords: Coords;

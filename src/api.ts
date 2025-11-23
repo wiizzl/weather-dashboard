@@ -1,6 +1,7 @@
-import { WeatherDataSchema } from "./schemas/weather.schema";
+import { GeocodeDataSchema } from "@/schemas/geocode.schema";
+import { WeatherDataSchema } from "@/schemas/weather.schema";
 
-import type { Coords } from "./types";
+import type { Coords } from "@/types";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -13,4 +14,11 @@ async function getWeather(coords: Coords) {
   return WeatherDataSchema.parse(data);
 }
 
-export { getWeather };
+async function getGeocode(location: string) {
+  const result = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
+  const data = await result.json();
+
+  return GeocodeDataSchema.parse(data);
+}
+
+export { getGeocode, getWeather };

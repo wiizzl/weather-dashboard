@@ -1,11 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { WeatherIcon } from "../weather-icon";
-import { Card } from "./card";
+import { Card } from "@/components/cards/card";
+import { WeatherIcon } from "@/components/weather-icon";
 
-import { getWeather } from "../../api";
-
-import type { Coords } from "../../types";
+import { getWeather } from "@/api";
+import type { Coords } from "@/types";
 
 type CurrentWeatherCardProps = {
   coords: Coords;
@@ -46,7 +45,7 @@ const CurrentWeatherCard = (props: CurrentWeatherCardProps) => {
       <div className="flex justify-between w-full">
         {subFields.map((field, index) => (
           <div className="flex flex-col items-center gap-2" key={index}>
-            <p className="text-gray-500">{field.label}</p>
+            <p className="text-muted-foreground">{field.label}</p>
             <p>{field.value}</p>
           </div>
         ))}

@@ -2,7 +2,7 @@ import "leaflet/dist/leaflet.css";
 
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 
-import type { Coords } from "../types";
+import type { Coords } from "@/types";
 
 type MapProps = {
   coords: Coords;
@@ -14,7 +14,7 @@ const Map = (props: MapProps) => {
 
   return (
     <MapContainer center={[lat, lon]} zoom={5} style={{ width: "100%", height: "500px" }}>
-      <MapClick onMapClick={props.onMapClick} />
+      <MapClick onMapClick={props.onMapClick} coords={props.coords} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -24,13 +24,14 @@ const Map = (props: MapProps) => {
   );
 };
 
-const MapClick = ({ onMapClick }: { onMapClick: (coords: Coords) => void }) => {
+const MapClick = (props: { onMapClick: (coords: Coords) => void; coords: Coords }) => {
   const map = useMap();
+
+  map.panTo([props.coords.lat, props.coords.lon]);
 
   map.on("click", (event) => {
     const { lat, lng } = event.latlng;
-    onMapClick({ lat, lon: lng });
-    map.panTo([lat, lng]);
+    props.onMapClick({ lat, lon: lng });
   });
 
   return null;

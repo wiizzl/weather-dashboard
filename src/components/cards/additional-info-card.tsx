@@ -1,11 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowUp, CircleGauge, Cloud, Sparkle, Sunrise, Sunset, Wind } from "lucide-react";
 
-import { Card } from "./card";
+import { Card } from "@/components/cards/card";
 
-import { getWeather } from "../../api";
-
-import type { Coords } from "../../types";
+import { getWeather } from "@/api";
+import type { Coords } from "@/types";
 
 const rows = [
   { label: "Cloudiness", value: "clouds", icon: Cloud },
@@ -16,7 +15,9 @@ const rows = [
   { label: "Sunset", value: "sunset", icon: Sunset },
 ] as const;
 
-const formatRows = (value: string, number: number) => {
+const formatRows = (value: string, number?: number) => {
+  if (!number) return "N/A";
+
   switch (value) {
     case "sunrise":
     case "sunset":
@@ -52,7 +53,7 @@ const AdditionalInfoCard = (props: AdditionalInfoCardProps) => {
     <Card title="Additional Weather Info" childrenClassName="flex flex-col gap-8">
       {rows.map((row, index) => (
         <div className="flex justify-between" key={index}>
-          <div className="flex items-center gap-2 text-gray-500">
+          <div className="flex items-center gap-2 text-muted-foreground">
             <row.icon className="size-5" />
             <span>{row.label}</span>
           </div>

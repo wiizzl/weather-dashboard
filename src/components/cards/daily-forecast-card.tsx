@@ -1,11 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { WeatherIcon } from "../weather-icon";
-import { Card } from "./card";
+import { Card } from "@/components/cards/card";
+import { WeatherIcon } from "@/components/weather-icon";
 
-import { getWeather } from "../../api";
-
-import type { Coords } from "../../types";
+import { getWeather } from "@/api";
+import type { Coords } from "@/types";
 
 type DailyForecastCardProps = {
   coords: Coords;
@@ -29,8 +28,8 @@ const DailyForecastCard = (props: DailyForecastCardProps) => {
             </p>
             <WeatherIcon label={weather.main} src={weather.icon} />
             <p>{Math.round(day.temp.day)}°C</p>
-            <p className="text-gray-500/75">{Math.round(day.temp.min)}°C</p>
-            <p className="text-gray-500/75">{Math.round(day.temp.max)}°C</p>
+            <p className="text-muted-foreground/75">{Math.round(day.temp.min)}°C</p>
+            <p className="text-muted-foreground/75">{Math.round(day.temp.max)}°C</p>
           </div>
         );
       })}
