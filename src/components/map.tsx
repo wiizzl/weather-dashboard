@@ -19,7 +19,7 @@ const Map = (props: MapProps) => {
   const { lat, lon } = props.coords;
 
   return (
-    <MapContainer center={[lat, lon]} zoom={5} style={{ width: "100%", height: "500px" }}>
+    <MapContainer center={[lat, lon]} zoom={5} className="w-full h-full rounded-xl">
       <MapClick onMapClick={props.onMapClick} coords={props.coords} />
       <MapTileLayer />
       {/* <TileLayer

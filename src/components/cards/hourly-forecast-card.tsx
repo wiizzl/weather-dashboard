@@ -22,16 +22,16 @@ const HourlyForecastCard = (props: HourlyForecastCardProps) => {
         const weather = hour.weather[0]; // TODO: handle multiple weather conditions
 
         return (
-          <div className="flex flex-col gap-2 items-center p-2" key={hour.dt}>
-            <p className="whitespace-nowrap">
+          <div className="flex flex-col 2xl:justify-between gap-2 items-center p-2" key={hour.dt}>
+            <p className="whitespace-nowrap 2xl:scale-110">
               {new Intl.DateTimeFormat(undefined, {
                 hour: "2-digit",
                 minute: "2-digit",
                 hour12: true,
               }).format(new Date(hour.dt * 1000))}
             </p>
-            <WeatherIcon label={weather.main} src={weather.icon} />
-            <p>{Math.round(hour.temp)}°C</p>
+            <WeatherIcon label={weather.main} src={weather.icon} className="2xl:size-10" />
+            <p className="2xl:scale-110">{Math.round(hour.temp)}°C</p>
           </div>
         );
       })}

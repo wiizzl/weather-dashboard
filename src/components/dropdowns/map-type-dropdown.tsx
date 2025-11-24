@@ -8,7 +8,11 @@ type MapTypeDropdownProps = {
 
 const MapTypeDropdown = (props: MapTypeDropdownProps) => {
   return (
-    <NativeSelect value={props.mapType} onChange={(event) => props.setMapType(event.target.value)}>
+    <NativeSelect
+      value={props.mapType}
+      onChange={(event) => props.setMapType(event.target.value)}
+      className="w-full xs:w-[180px]"
+    >
       {types.map((type) => (
         <NativeSelectOption value={type.value} key={type.value}>
           {type.label}

@@ -20,19 +20,19 @@ type SidePanelProps = {
 
 const SidePanel = (props: SidePanelProps) => {
   return (
-    <div
+    <aside
       className={cn(
-        "fixed top-0 right-0 h-screen w-90 shadow-md bg-sidebar z-1000 py-8 px-4 overflow-y-scroll transition-transform duration-300",
+        "fixed top-0 right-0 h-screen w-sidebar shadow-md bg-sidebar z-1001 py-8 px-4 overflow-y-scroll transition-transform duration-300 lg:translate-x-0!",
         props.isOpen ? "translate-x-0" : "translate-x-full"
       )}
     >
       <button onClick={() => props.setOpen(false)}>
-        <ChevronLeft className="size-8 -ml-2" />
+        <ChevronLeft className="size-8 -ml-2 lg:hidden" />
       </button>
       <Suspense fallback={<SidePanelSkeleton />}>
         <AirPollution {...props} />
       </Suspense>
-    </div>
+    </aside>
   );
 };
 

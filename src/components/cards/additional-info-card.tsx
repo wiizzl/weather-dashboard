@@ -50,7 +50,7 @@ const AdditionalInfoCard = (props: AdditionalInfoCardProps) => {
   });
 
   return (
-    <Card title="Additional Weather Info" childrenClassName="flex flex-col gap-8">
+    <Card title="Additional Weather Info" childrenClassName="grid grid-cols-1 md:grid-cols-2 gap-8">
       {rows.map((row) => (
         <div className="flex justify-between" key={row.label}>
           <div className="flex items-center gap-2 text-muted-foreground">

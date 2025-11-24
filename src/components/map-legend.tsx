@@ -10,7 +10,7 @@ const MapLegend = (props: MapLegendProps) => {
   const gradientStops = data.stops.map((stop) => `${stop.color} ${(stop.value / maxValue) * 100}%`).join(", ");
 
   return (
-    <div className="flex flex-col gap-3 absolute top-4 right-4 w-96 z-400 rounded-xl shadow-lg p-4 bg-background/50 border border-accent/70">
+    <div className="flex flex-col gap-3 absolute top-4 right-4 w-48 xs:w-96 z-400 rounded-xl shadow-lg p-4 bg-background/50 border border-accent/70">
       <h3 className="text-sm font-semibold text-foreground">{data.title}</h3>
       <div
         className="w-full h-6 rounded-xl border border-accent/70"
