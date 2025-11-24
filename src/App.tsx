@@ -16,6 +16,7 @@ import { AdditionalInfoSkeleton } from "@/components/skeletons/additional-info-s
 import { CurrentSkeleton } from "@/components/skeletons/current-skeleton";
 import { DailySkeleton } from "@/components/skeletons/daily-skeleton";
 import { HourlySkeleton } from "@/components/skeletons/hourly-skeleton";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 import { getGeocode } from "@/api";
 import type { Coords } from "@/types";
@@ -51,9 +52,14 @@ export default function App() {
             <h1 className="text-2xl font-semibold whitespace-nowrap">Map type:</h1>
             <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
           </div>
-          <button onClick={() => setSidePanelOpen(true)} className="hidden xs:block">
-            <Menu className="size-6 ml-auto lg:hidden" />
-          </button>
+          <div className="ml-auto flex gap-4 items-center">
+            <div className="hidden xs:block">
+              <ThemeToggle />
+            </div>
+            <button onClick={() => setSidePanelOpen(true)} className="hidden xs:block">
+              <Menu className="size-6 lg:hidden" />
+            </button>
+          </div>
         </div>
         <div className="grid grid-cols-1 2xl:flex-1 2xl:min-h-0 md:grid-cols-2 2xl:grid-cols-4 2xl:grid-rows-4 gap-4">
           <div className="relative h-120 2xl:h-auto md:col-span-2 2xl:col-span-4 2xl:row-span-2 order-1">

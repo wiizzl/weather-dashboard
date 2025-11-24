@@ -3,7 +3,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const CurrentSkeleton = () => {
   return (
-    <Card title="Current Weather" childrenClassName="flex flex-col items-center gap-6 2xl:justify-between">
+    <Card
+      title="Current Weather"
+      childrenClassName="flex flex-col items-center gap-6 2xl:justify-between"
+      className="md:pb-11"
+    >
       <div className="flex flex-col gap-2 items-center">
         <Skeleton className="w-25 h-16" />
         <Skeleton className="size-14 rounded-full" />
