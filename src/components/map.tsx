@@ -1,11 +1,13 @@
 import "leaflet/dist/leaflet.css";
 
+import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
+import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 
 import type { Coords } from "@/types";
 
 const OPENWEATHER_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
-// const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
+const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_API_KEY;
 
 type MapProps = {
   coords: Coords;
@@ -19,11 +21,11 @@ const Map = (props: MapProps) => {
   return (
     <MapContainer center={[lat, lon]} zoom={5} style={{ width: "100%", height: "500px" }}>
       <MapClick onMapClick={props.onMapClick} coords={props.coords} />
-      {/* <MapTileLayer /> */}
-      <TileLayer
+      <MapTileLayer />
+      {/* <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      /> */}
       <TileLayer
         opacity={0.7}
         url={`https://tile.openweathermap.org/map/${props.mapType}/{z}/{x}/{y}.png?appid=${OPENWEATHER_API_KEY}`}
@@ -33,24 +35,24 @@ const Map = (props: MapProps) => {
   );
 };
 
-// const MapTileLayer = () => {
-//   const map = useMap();
+const MapTileLayer = () => {
+  const map = useMap();
 
-//   useEffect(() => {
-//     const tileLayer = new MaptilerLayer({
-//       style: "satellite",
-//       apiKey: MAPTILER_API_KEY,
-//     });
+  useEffect(() => {
+    const tileLayer = new MaptilerLayer({
+      style: "satellite",
+      apiKey: MAPTILER_API_KEY,
+    });
 
-//     tileLayer.addTo(map);
+    tileLayer.addTo(map);
 
-//     return () => {
-//       map.removeLayer(tileLayer);
-//     };
-//   }, [map]);
+    return () => {
+      map.removeLayer(tileLayer);
+    };
+  }, [map]);
 
-//   return null;
-// };
+  return null;
+};
 
 const MapClick = (props: { onMapClick: (coords: Coords) => void; coords: Coords }) => {
   const map = useMap();
