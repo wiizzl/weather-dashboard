@@ -1,6 +1,10 @@
+import defaultMarkerIconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+import defaultMarkerIconUrl from "leaflet/dist/images/marker-icon.png";
+import defaultMarkerShadowUrl from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 
 import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
+import { Icon } from "leaflet";
 import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 
@@ -45,6 +49,11 @@ const MapTileLayer = () => {
     });
 
     tileLayer.addTo(map);
+    Icon.Default.mergeOptions({
+      iconUrl: defaultMarkerIconUrl,
+      iconRetinaUrl: defaultMarkerIconRetinaUrl,
+      shadowUrl: defaultMarkerShadowUrl,
+    });
 
     return () => {
       map.removeLayer(tileLayer);
